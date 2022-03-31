@@ -16,6 +16,7 @@
 
 package ua.mibal.tictactoe.component;
 
+import ua.mibal.tictactoe.model.Cell;
 import ua.mibal.tictactoe.model.GameTable;
 
 /**
@@ -23,11 +24,27 @@ import ua.mibal.tictactoe.model.GameTable;
  * @link http://t.me/mibal_ua
  */
 public class DataPrinter {
- public void printMappingTable() {
 
- }
+    public void printMappingTable() {
+        System.out.println("""
+                -------------
+                | 7 | 8 | 9 |
+                -------------
+                | 4 | 5 | 6 |
+                -------------
+                | 1 | 2 | 3 |
+                -------------""");
+    }
 
- public void printGameTable(final GameTable gameTable) {
+    public void printGameTable(final GameTable gameTable) {
 
- }
+        for (int i = 0; i < 3; i++) {
+            System.out.println("-------------");
+            for (int j = 0; j < 3; j++) {
+                System.out.print("| " + gameTable.getSign(new Cell(i, j)) + " ");
+            }
+            System.out.println("|");
+        }
+        System.out.println("-------------");
+    }
 }
