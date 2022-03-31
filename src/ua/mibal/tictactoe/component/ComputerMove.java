@@ -16,14 +16,27 @@
 
 package ua.mibal.tictactoe.component;
 
+import ua.mibal.tictactoe.model.Cell;
 import ua.mibal.tictactoe.model.GameTable;
+
+import java.util.Random;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
 public class ComputerMove {
-    public void make(final GameTable gameTable) {
 
+    public void make(final GameTable gameTable) {
+        final Random random = new Random();
+        while (true) {
+            final int row = random.nextInt(3);
+            final int col = random.nextInt(3);
+            Cell cell = new Cell(row, col);
+            if (gameTable.isEmpty(cell)) {
+                gameTable.setSign(cell, 'O');
+                return;
+            }
+        }
     }
 }
