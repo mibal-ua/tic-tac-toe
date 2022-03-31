@@ -20,10 +20,12 @@ package ua.mibal.tictactoe;
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public final class Launcher {
+public class DataPrinter {
+ public void printMappingTable() {
 
-    public static void main(String[] args) {
-        final Game game = new Game(new DataPrinter(), new ComputerMove(), new UserMove(), new WinnerVerifier(), new DrawVerifier());
-        game.play();
-    }
+ }
+
+ public void printGameTable(final GameTable gameTable) {
+
+ }
 }

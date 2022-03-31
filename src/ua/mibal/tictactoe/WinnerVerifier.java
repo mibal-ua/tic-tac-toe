@@ -20,10 +20,12 @@ package ua.mibal.tictactoe;
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public final class Launcher {
+public class WinnerVerifier {
+ public boolean isUserWin(final GameTable gameTable) {
+  return false;
+ }
 
-    public static void main(String[] args) {
-        final Game game = new Game(new DataPrinter(), new ComputerMove(), new UserMove(), new WinnerVerifier(), new DrawVerifier());
-        game.play();
-    }
+ public boolean isComputerWin(final GameTable gameTable) {
+  return false;
+ }
 }
