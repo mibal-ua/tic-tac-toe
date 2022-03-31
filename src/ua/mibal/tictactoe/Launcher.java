@@ -16,6 +16,8 @@
 
 package ua.mibal.tictactoe;
 
+import ua.mibal.tictactoe.component.*;
+
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua

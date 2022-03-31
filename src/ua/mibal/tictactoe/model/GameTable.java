@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-package ua.mibal.tictactoe;
+package ua.mibal.tictactoe.model;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public class ComputerMove {
-    public void make(final GameTable gameTable) {
-
-    }
+public class GameTable {
 }

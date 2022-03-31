@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-package ua.mibal.tictactoe;
+package ua.mibal.tictactoe.component;
+
+import ua.mibal.tictactoe.model.GameTable;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public class UserMove {
- public void make(final GameTable gameTable) {
-
- }
+public class DrawVerifier {
+    public boolean isDraw(final GameTable gameTable) {
+        return false;
+    }
 }

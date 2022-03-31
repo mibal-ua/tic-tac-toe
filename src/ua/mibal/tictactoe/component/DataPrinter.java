@@ -14,18 +14,20 @@
  * limitations under the License.
  */
 
-package ua.mibal.tictactoe;
+package ua.mibal.tictactoe.component;
+
+import ua.mibal.tictactoe.model.GameTable;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public class WinnerVerifier {
- public boolean isUserWin(final GameTable gameTable) {
-  return false;
+public class DataPrinter {
+ public void printMappingTable() {
+
  }
 
- public boolean isComputerWin(final GameTable gameTable) {
-  return false;
+ public void printGameTable(final GameTable gameTable) {
+
  }
 }

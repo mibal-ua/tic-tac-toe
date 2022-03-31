@@ -14,18 +14,16 @@
  * limitations under the License.
  */
 
-package ua.mibal.tictactoe;
+package ua.mibal.tictactoe.component;
+
+import ua.mibal.tictactoe.model.GameTable;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public class DataPrinter {
- public void printMappingTable() {
-
- }
-
- public void printGameTable(final GameTable gameTable) {
+public class UserMove {
+ public void make(final GameTable gameTable) {
 
  }
 }

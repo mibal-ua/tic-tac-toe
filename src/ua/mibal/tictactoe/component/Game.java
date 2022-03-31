@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package ua.mibal.tictactoe;
+package ua.mibal.tictactoe.component;
+
+import ua.mibal.tictactoe.model.GameTable;
 
 import java.util.Random;
 
