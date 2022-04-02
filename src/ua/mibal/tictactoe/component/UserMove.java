@@ -16,14 +16,40 @@
 
 package ua.mibal.tictactoe.component;
 
+import ua.mibal.tictactoe.model.Cell;
 import ua.mibal.tictactoe.model.GameTable;
+
+import java.util.Scanner;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
 public class UserMove {
- public void make(final GameTable gameTable) {
+    public void make(final GameTable gameTable) {
+        while (true) {
+            System.out.println("Please type number between 1 and 9:");
+            int user = new Scanner(System.in).nextInt();
+            if (requestIsCorrect(user)) {
+                Cell cell = createCellByNumber(user);
+                if (gameTable.isEmpty(cell)) {
+                    gameTable.setSign(cell, 'X');
+                    return;
+                }
+                System.out.print(user + " cell is not empty. ");
+                continue;
+            }
+            System.out.print(user + " is not correct number. ️");
+        }
+    }
 
- }
+    private Cell createCellByNumber(final int user) {
+        int row = 2 - (user - 1) / 3;
+        int col = (user - 1) % 3;
+        return new Cell(row, col);
+    }
+
+    private boolean requestIsCorrect(final int user) {
+        return 1 <= user && user <= 9;
+    }
 }

@@ -41,7 +41,6 @@ public class WinnerVerifier {
     }
 
     private boolean isWinnerByRows(final GameTable gameTable, final char sign) {
-        //horizontal
         for (int i = 0; i < 3; i++) {
             if (gameTable.getSign(new Cell(i, 0)) == gameTable.getSign(new Cell(i, 1)) &&
                 gameTable.getSign(new Cell(i, 1)) == gameTable.getSign(new Cell(i, 2)) &&
@@ -53,7 +52,6 @@ public class WinnerVerifier {
     }
 
     private boolean isWinnerByCols(final GameTable gameTable, final char sign) {
-        //vertical
         for (int i = 0; i < 3; i++) {
             if (gameTable.getSign(new Cell(0, i)) == gameTable.getSign(new Cell(1, i)) &&
                 gameTable.getSign(new Cell(1, i)) == gameTable.getSign(new Cell(2, i)) &&
@@ -65,7 +63,6 @@ public class WinnerVerifier {
     }
 
     private boolean isWinnerByMainDiagonal(final GameTable gameTable, final char sign) {
-        //diagonal
         return gameTable.getSign(new Cell(0, 0)) == gameTable.getSign(new Cell(1, 1)) &&
                gameTable.getSign(new Cell(1, 1)) == gameTable.getSign(new Cell(2, 2)) &&
                gameTable.getSign(new Cell(2, 2)) == sign;
