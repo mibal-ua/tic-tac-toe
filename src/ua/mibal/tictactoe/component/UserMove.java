@@ -31,7 +31,7 @@ public class UserMove {
             System.out.println("Please type number between 1 and 9:");
             int user = new Scanner(System.in).nextInt();
             if (requestIsCorrect(user)) {
-                Cell cell = createCellByNumber(user);
+                Cell cell = CellNumberConverter.convert(user);
                 if (gameTable.isEmpty(cell)) {
                     gameTable.setSign(cell, 'X');
                     return;
@@ -41,12 +41,6 @@ public class UserMove {
             }
             System.out.print(user + " is not correct number. ️");
         }
-    }
-
-    private Cell createCellByNumber(final int user) {
-        int row = 2 - (user - 1) / 3;
-        int col = (user - 1) % 3;
-        return new Cell(row, col);
     }
 
     private boolean requestIsCorrect(final int user) {
