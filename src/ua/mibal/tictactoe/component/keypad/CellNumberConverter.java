@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ua.mibal.tictactoe.component;
+package ua.mibal.tictactoe.component.keypad;
 
 import ua.mibal.tictactoe.model.Cell;
 
@@ -22,26 +22,9 @@ import ua.mibal.tictactoe.model.Cell;
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public class CellNumberConverter {
+public interface CellNumberConverter {
 
-    private final char[][] mapping = {
-            {'7', '8', '9'},
-            {'4', '5', '6'},
-            {'1', '2', '3'}
-    };
+    Cell toCell(char num);
 
-    public Cell toCell(final char num) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (mapping[i][j] == num) {
-                    return new Cell(i, j);
-                }
-            }
-        }
-        return null;
-    }
-
-    public char toNumber(final Cell cell) {
-        return mapping[cell.getRow()][cell.getCol()];
-    }
+    char toNumber(Cell cell);
 }

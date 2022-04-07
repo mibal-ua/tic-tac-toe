@@ -16,6 +16,7 @@
 
 package ua.mibal.tictactoe.component;
 
+import ua.mibal.tictactoe.component.keypad.CellNumberConverter;
 import ua.mibal.tictactoe.model.Cell;
 import ua.mibal.tictactoe.model.GameTable;
 
