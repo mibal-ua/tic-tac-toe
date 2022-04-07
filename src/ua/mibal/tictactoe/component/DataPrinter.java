@@ -25,19 +25,24 @@ import ua.mibal.tictactoe.model.GameTable;
  */
 public class DataPrinter {
 
+    private final CellNumberConverter cellNumberConverter;
+
+    public DataPrinter(final CellNumberConverter cellNumberConverter) {
+        this.cellNumberConverter = cellNumberConverter;
+    }
+
     public void printMappingTable() {
-        System.out.println("""
-                -------------
-                | 7 | 8 | 9 |
-                -------------
-                | 4 | 5 | 6 |
-                -------------
-                | 1 | 2 | 3 |
-                -------------""");
+        for (int i = 0; i < 3; i++) {
+            System.out.println("-------------");
+            for (int j = 0; j < 3; j++) {
+                System.out.print("| " + cellNumberConverter.toNumber(new Cell(i, j)) + " ");
+            }
+            System.out.println("|");
+        }
+        System.out.println("-------------");
     }
 
     public void printGameTable(final GameTable gameTable) {
-
         for (int i = 0; i < 3; i++) {
             System.out.println("-------------");
             for (int j = 0; j < 3; j++) {
