@@ -14,29 +14,31 @@
  * limitations under the License.
  */
 
-package ua.mibal.tictactoe.component;
+package main.java.ua.mibal.tictactoe.component.keypad;
 
-import ua.mibal.tictactoe.model.Cell;
-import ua.mibal.tictactoe.model.GameTable;
-
-import java.util.Random;
+import main.java.ua.mibal.tictactoe.component.CellNumberConverter;
+import main.java.ua.mibal.tictactoe.model.Cell;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public class ComputerMove {
+public class TerminalNumericKeypadCellNumberConverter implements CellNumberConverter {
 
-    public void make(final GameTable gameTable) {
-        final Random random = new Random();
-        while (true) {
-            final int row = random.nextInt(3);
-            final int col = random.nextInt(3);
-            Cell cell = new Cell(row, col);
-            if (gameTable.isEmpty(cell)) {
-                gameTable.setSign(cell, 'O');
-                return;
-            }
-        }
+    private final char[][] mapping = {
+            {'1', '2', '3'},
+            {'4', '5', '6'},
+            {'7', '8', '9'}
+    };
+
+    @Override
+    public Cell toCell(final char num) {
+        final int val = num - '0' - 1;
+        return new Cell(val / 3, val % 3);
+    }
+
+    @Override
+    public char toNumber(final Cell cell) {
+        return (char) ('0' + (cell.getRow() * 3 + cell.getCol() + 1));
     }
 }

@@ -14,17 +14,25 @@
  * limitations under the License.
  */
 
-package ua.mibal.tictactoe.component.keypad;
+package main.java.ua.mibal.tictactoe.component;
 
-import ua.mibal.tictactoe.model.Cell;
+import main.java.ua.mibal.tictactoe.model.Cell;
+import main.java.ua.mibal.tictactoe.model.GameTable;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public interface CellNumberConverter {
+public class CellVerifier {
 
-    Cell toCell(char num);
-
-    char toNumber(Cell cell);
+    public boolean allCellsFilled(final GameTable gameTable) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (gameTable.isEmpty(new Cell(i, j))) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

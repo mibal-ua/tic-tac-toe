@@ -14,36 +14,17 @@
  * limitations under the License.
  */
 
-package ua.mibal.tictactoe.model;
+package main.java.ua.mibal.tictactoe.component;
+
+import main.java.ua.mibal.tictactoe.model.Cell;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public class Cell {
+public interface CellNumberConverter {
 
-    private final int row;
+    Cell toCell(char num);
 
-    private final int col;
-
-    public Cell(final int row, final int col) {
-        this.row = row;
-        this.col = col;
-    }
-
-    public int getRow() {
-        return row;
-    }
-
-    public int getCol() {
-        return col;
-    }
-
-    @Override
-    public String toString() {
-        return "Cell{" +
-                "row=" + row +
-                ", col=" + col +
-                '}';
-    }
+    char toNumber(Cell cell);
 }

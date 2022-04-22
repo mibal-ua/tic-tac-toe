@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ua.mibal.tictactoe.model;
+package main.java.ua.mibal.tictactoe.model;
 
 import java.util.Arrays;
 

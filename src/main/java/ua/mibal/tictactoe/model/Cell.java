@@ -14,25 +14,36 @@
  * limitations under the License.
  */
 
-package ua.mibal.tictactoe.component;
-
-import ua.mibal.tictactoe.model.Cell;
-import ua.mibal.tictactoe.model.GameTable;
+package main.java.ua.mibal.tictactoe.model;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public class CellVerifier {
+public class Cell {
 
-    public boolean allCellsFilled(final GameTable gameTable) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (gameTable.isEmpty(new Cell(i, j))) {
-                    return false;
-                }
-            }
-        }
-        return true;
+    private final int row;
+
+    private final int col;
+
+    public Cell(final int row, final int col) {
+        this.row = row;
+        this.col = col;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    @Override
+    public String toString() {
+        return "Cell{" +
+                "row=" + row +
+                ", col=" + col +
+                '}';
     }
 }
