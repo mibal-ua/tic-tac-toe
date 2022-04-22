@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package main.java.ua.mibal.tictactoe.component;
+package ua.mibal.tictactoe.component;
 
-import main.java.ua.mibal.tictactoe.model.Cell;
+import ua.mibal.tictactoe.model.Cell;
 
 /**
  * @author Michael Balakhon

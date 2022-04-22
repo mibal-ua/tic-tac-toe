@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package main.java.ua.mibal.tictactoe.component;
+package ua.mibal.tictactoe.component;
 
-import main.java.ua.mibal.tictactoe.model.GameTable;
+import ua.mibal.tictactoe.model.GameTable;
 
 import java.util.Random;
 
@@ -30,16 +30,16 @@ public class Game {
 
     private final ComputerMove computerMove;
 
-    private final UserMove userMove;
+    private final ua.mibal.tictactoe.component.UserMove userMove;
 
-    private final WinnerVerifier winnerVerifier;
+    private final ua.mibal.tictactoe.component.WinnerVerifier winnerVerifier;
 
     private final CellVerifier drawVerifier;
 
     public Game(final DataPrinter dataPrinter,
                 final ComputerMove computerMove,
-                final UserMove userMove,
-                final WinnerVerifier winnerVerifier,
+                final ua.mibal.tictactoe.component.UserMove userMove,
+                final ua.mibal.tictactoe.component.WinnerVerifier winnerVerifier,
                 final CellVerifier drawVerifier) {
         this.dataPrinter = dataPrinter;
         this.computerMove = computerMove;

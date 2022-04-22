@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package main.java.ua.mibal.tictactoe;
+package ua.mibal.tictactoe;
 
-import main.java.ua.mibal.tictactoe.component.*;
-import main.java.ua.mibal.tictactoe.component.keypad.DesktopNumericKeypadCellNumberConverter;
+import ua.mibal.tictactoe.component.*;
+import ua.mibal.tictactoe.component.keypad.DesktopNumericKeypadCellNumberConverter;
 
 /**
  * @author Michael Balakhon
