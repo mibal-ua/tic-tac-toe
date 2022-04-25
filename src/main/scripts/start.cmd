@@ -15,5 +15,5 @@
 @rem
 @echo off
 
-java -jar ${project.build.finalName}.jar
+java -jar ${project.build.finalName}-release.jar
 pause
