@@ -21,9 +21,6 @@ import ua.mibal.tictactoe.model.Player;
 
 import java.util.Random;
 
-import static ua.mibal.tictactoe.model.Sign.O;
-import static ua.mibal.tictactoe.model.Sign.X;
-
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
@@ -32,24 +29,27 @@ public class Game {
 
     private final DataPrinter dataPrinter;
 
-    private final ComputerMove computerMove;
+    private final Player player1;
 
-    private final ua.mibal.tictactoe.component.UserMove userMove;
+    private final Player player2;
 
-    private final ua.mibal.tictactoe.component.WinnerVerifier winnerVerifier;
+    private final WinnerVerifier winnerVerifier;
 
     private final CellVerifier drawVerifier;
 
+    private final boolean canSecondPlayerMakeFirstMove;
+
     public Game(final DataPrinter dataPrinter,
-                final ComputerMove computerMove,
-                final ua.mibal.tictactoe.component.UserMove userMove,
-                final ua.mibal.tictactoe.component.WinnerVerifier winnerVerifier,
-                final CellVerifier drawVerifier) {
+                final Player player1,
+                final Player player2,
+                final WinnerVerifier winnerVerifier,
+                final CellVerifier drawVerifier, final boolean canSecondPlayerMakeFirstMove) {
         this.dataPrinter = dataPrinter;
-        this.computerMove = computerMove;
-        this.userMove = userMove;
+        this.player1 = player1;
+        this.player2 = player2;
         this.winnerVerifier = winnerVerifier;
         this.drawVerifier = drawVerifier;
+        this.canSecondPlayerMakeFirstMove = canSecondPlayerMakeFirstMove;
     }
 
     public void play() {
@@ -57,14 +57,12 @@ public class Game {
         dataPrinter.printMappingTable();
         final GameTable gameTable = new GameTable();
 
-        /*if (new Random().nextBoolean()) {
-            computerMove.make(gameTable);
+        if (canSecondPlayerMakeFirstMove && new Random().nextBoolean()) {
+            player2.makeMove(gameTable);
             dataPrinter.printGameTable(gameTable);
         }
 
-         */
-
-        final Player[] players = {new Player(O, userMove), new Player(X, computerMove)};
+        final Player[] players = {player1, player2};
         while (true) {
             for (final Player player : players) {
                 player.makeMove(gameTable);

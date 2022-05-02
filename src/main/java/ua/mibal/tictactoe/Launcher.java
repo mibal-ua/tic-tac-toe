@@ -18,6 +18,9 @@ package ua.mibal.tictactoe;
 
 import ua.mibal.tictactoe.component.*;
 import ua.mibal.tictactoe.component.keypad.DesktopNumericKeypadCellNumberConverter;
+import ua.mibal.tictactoe.model.Player;
+
+import static ua.mibal.tictactoe.model.Sign.*;
 
 /**
  * @author Michael Balakhon
@@ -28,8 +31,14 @@ public final class Launcher {
     public static void main(String[] args) {
         final CellNumberConverter cellNumberConverter = new DesktopNumericKeypadCellNumberConverter();
         final Game game = new Game(
-                new DataPrinter(cellNumberConverter), new ComputerMove(), new UserMove(cellNumberConverter), new WinnerVerifier(), new CellVerifier()
-        );
+                new DataPrinter(cellNumberConverter),
+                new Player(X, new UserMove(cellNumberConverter)),
+                new Player(O, new UserMove(cellNumberConverter)),
+                /*new Player(O, new ComputerMove()),
+                new Player(X, new ComputerMove()),*/
+                new WinnerVerifier(),
+                new CellVerifier(),
+                false);
         game.play();
     }
 }
