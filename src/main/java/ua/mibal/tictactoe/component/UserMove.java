@@ -18,6 +18,7 @@ package ua.mibal.tictactoe.component;
 
 import ua.mibal.tictactoe.model.Cell;
 import ua.mibal.tictactoe.model.GameTable;
+import static ua.mibal.tictactoe.model.Sign.X;
 
 import java.util.Scanner;
 
@@ -37,7 +38,7 @@ public class UserMove {
         while (true) {
             final Cell cell = getUserInput();
             if (gameTable.isEmpty(cell)) {
-                gameTable.setSign(cell, 'X');
+                gameTable.setSign(cell, X);
                 return;
             } else {
                 System.out.println("Can't make a move, because the cell is not free! Try again");

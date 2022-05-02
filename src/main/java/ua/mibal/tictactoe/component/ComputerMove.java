@@ -18,6 +18,9 @@ package ua.mibal.tictactoe.component;
 
 import ua.mibal.tictactoe.model.Cell;
 import ua.mibal.tictactoe.model.GameTable;
+import ua.mibal.tictactoe.model.Sign;
+
+import static ua.mibal.tictactoe.model.Sign.O;
 
 import java.util.Random;
 
@@ -34,7 +37,7 @@ public class ComputerMove {
             final int col = random.nextInt(3);
             Cell cell = new Cell(row, col);
             if (gameTable.isEmpty(cell)) {
-                gameTable.setSign(cell, 'O');
+                gameTable.setSign(cell, O);
                 return;
             }
         }

@@ -17,6 +17,7 @@
 package ua.mibal.tictactoe.model;
 
 import java.util.Arrays;
+import static ua.mibal.tictactoe.model.Sign.EMPTY;
 
 /**
  * @author Michael Balakhon
@@ -24,21 +25,21 @@ import java.util.Arrays;
  */
 public class GameTable {
 
-    private final char[][] table = {
-            {' ', ' ', ' '},
-            {' ', ' ', ' '},
-            {' ', ' ', ' '}
+    private final Sign[][] table = {
+            {EMPTY, EMPTY, EMPTY},
+            {EMPTY, EMPTY, EMPTY},
+            {EMPTY, EMPTY, EMPTY}
     };
 
     public boolean isEmpty(final Cell cell) {
-        return table[cell.getRow()][cell.getCol()] == ' ';
+        return table[cell.getRow()][cell.getCol()] == EMPTY;
     }
 
-    public char getSign(final Cell cell) {
+    public Sign getSign(final Cell cell) {
         return table[cell.getRow()][cell.getCol()];
     }
 
-    public void setSign(final Cell cell, final char sign) {
+    public void setSign(final Cell cell, final Sign sign) {
         table[cell.getRow()][cell.getCol()] = sign;
     }
 
