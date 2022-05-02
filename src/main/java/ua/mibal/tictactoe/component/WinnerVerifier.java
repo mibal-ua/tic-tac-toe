@@ -20,6 +20,8 @@ import ua.mibal.tictactoe.model.Cell;
 import ua.mibal.tictactoe.model.GameTable;
 import static ua.mibal.tictactoe.model.Sign.X;
 import static ua.mibal.tictactoe.model.Sign.O;
+
+import ua.mibal.tictactoe.model.Player;
 import ua.mibal.tictactoe.model.Sign;
 
 /**
@@ -28,19 +30,11 @@ import ua.mibal.tictactoe.model.Sign;
  */
 public class WinnerVerifier {
 
-    public boolean isUserWin(final GameTable gameTable) {
-        return isWinner(gameTable, X);
-    }
-
-    public boolean isComputerWin(final GameTable gameTable) {
-        return isWinner(gameTable, O);
-    }
-
-    private boolean isWinner(GameTable gameTable, Sign sign) {
-        return isWinnerByRows(gameTable, sign) ||
-               isWinnerByCols(gameTable, sign) ||
-               isWinnerByMainDiagonal(gameTable, sign) ||
-               isWinnerBySecondDiagonal(gameTable, sign);
+    public boolean isWinner(GameTable gameTable, Player player) {
+        return isWinnerByRows(gameTable, player.getSign()) ||
+               isWinnerByCols(gameTable, player.getSign()) ||
+               isWinnerByMainDiagonal(gameTable, player.getSign()) ||
+               isWinnerBySecondDiagonal(gameTable, player.getSign());
     }
 
     private boolean isWinnerByRows(final GameTable gameTable, final Sign sign) {
