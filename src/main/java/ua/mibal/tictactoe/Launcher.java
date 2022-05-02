@@ -29,16 +29,8 @@ import static ua.mibal.tictactoe.model.Sign.*;
 public final class Launcher {
 
     public static void main(String[] args) {
-        final CellNumberConverter cellNumberConverter = new DesktopNumericKeypadCellNumberConverter();
-        final Game game = new Game(
-                new DataPrinter(cellNumberConverter),
-                new Player(X, new UserMove(cellNumberConverter)),
-                new Player(O, new UserMove(cellNumberConverter)),
-                /*new Player(O, new ComputerMove()),
-                new Player(X, new ComputerMove()),*/
-                new WinnerVerifier(),
-                new CellVerifier(),
-                false);
+        final GameFactory gameFactory = new GameFactory(args);
+        final Game game = gameFactory.create();
         game.play();
     }
 }
