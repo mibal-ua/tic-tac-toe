@@ -19,7 +19,6 @@ package ua.mibal.tictactoe.component.console;
 
 import ua.mibal.tictactoe.component.CellNumberConverter;
 import ua.mibal.tictactoe.component.DataPrinter;
-import ua.mibal.tictactoe.component.DataPrinterImpl;
 import ua.mibal.tictactoe.model.Cell;
 import ua.mibal.tictactoe.model.GameTable;
 

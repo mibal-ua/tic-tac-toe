@@ -27,7 +27,7 @@ import java.util.Random;
  */
 public class Game {
 
-    private final DataPrinterImpl dataPrinterImpl;
+    private final DataPrinter dataPrinter;
 
     private final Player player1;
 
@@ -39,12 +39,13 @@ public class Game {
 
     private final boolean canSecondPlayerMakeFirstMove;
 
-    public Game(final DataPrinterImpl dataPrinterImpl,
+
+    public Game(final DataPrinter dataPrinter,
                 final Player player1,
                 final Player player2,
                 final WinnerVerifier winnerVerifier,
                 final CellVerifier drawVerifier, final boolean canSecondPlayerMakeFirstMove) {
-        this.dataPrinterImpl = dataPrinterImpl;
+        this.dataPrinter = dataPrinter;
         this.player1 = player1;
         this.player2 = player2;
         this.winnerVerifier = winnerVerifier;
@@ -53,27 +54,27 @@ public class Game {
     }
 
     public void play() {
-        System.out.println("Use the following mapping table to specify a cell using numbers from 1 to 9:");
-        dataPrinterImpl.printMappingTable();
+        dataPrinter.printInfoMessage("Use the following mapping table to specify a cell using numbers from 1 to 9:");
+        dataPrinter.printMappingTable();
         final GameTable gameTable = new GameTable();
 
         if (canSecondPlayerMakeFirstMove && new Random().nextBoolean()) {
             player2.makeMove(gameTable);
-            dataPrinterImpl.printGameTable(gameTable);
+            dataPrinter.printGameTable(gameTable);
         }
 
         final Player[] players = {player1, player2};
         while (true) {
             for (final Player player : players) {
                 player.makeMove(gameTable);
-                dataPrinterImpl.printGameTable(gameTable);
+                dataPrinter.printGameTable(gameTable);
                 if (winnerVerifier.isWinner(gameTable, player)) {
-                    System.out.println(player + " WIN!");
+                    dataPrinter.printInfoMessage(player + " WIN!");
                     printGameOver();
                     return;
                 }
                 if (drawVerifier.allCellsFilled(gameTable)) {
-                    System.out.println("DRAW!");
+                    dataPrinter.printInfoMessage("DRAW!");
                     printGameOver();
                     return;
                 }
@@ -82,6 +83,6 @@ public class Game {
     }
 
     private void printGameOver() {
-        System.out.println("GAME OVER!");
+        dataPrinter.printInfoMessage("GAME OVER!");
     }
 }
