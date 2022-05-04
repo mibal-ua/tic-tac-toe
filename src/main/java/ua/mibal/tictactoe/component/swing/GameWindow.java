@@ -18,9 +18,10 @@
 package ua.mibal.tictactoe.component.swing;
 
 import ua.mibal.tictactoe.component.DataPrinter;
+import ua.mibal.tictactoe.component.GameOverHandler;
 import ua.mibal.tictactoe.component.UserInputReader;
-import ua.mibal.tictactoe.model.Cell;
-import ua.mibal.tictactoe.model.GameTable;
+import ua.mibal.tictactoe.model.game.Cell;
+import ua.mibal.tictactoe.model.game.GameTable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,7 +32,7 @@ import java.awt.event.MouseEvent;
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public final class GameWindow extends JFrame implements DataPrinter, UserInputReader {
+public final class GameWindow extends JFrame implements DataPrinter, UserInputReader, GameOverHandler {
 
     private static final int GAME_TABLE_SIZE = 3;
 
@@ -105,8 +106,8 @@ public final class GameWindow extends JFrame implements DataPrinter, UserInputRe
     }
 
     @Override
-    public void printMappingTable() {
-        // Do nothing
+    public void printInstructions() {
+        // do nothing
     }
 
     @Override
@@ -129,5 +130,10 @@ public final class GameWindow extends JFrame implements DataPrinter, UserInputRe
             }
         }
         return clickedCell;
+    }
+
+    @Override
+    public void gameOver() {
+        System.exit(0);
     }
 }

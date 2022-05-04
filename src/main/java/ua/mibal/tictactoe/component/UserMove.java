@@ -16,9 +16,9 @@
 
 package ua.mibal.tictactoe.component;
 
-import ua.mibal.tictactoe.model.Cell;
-import ua.mibal.tictactoe.model.GameTable;
-import ua.mibal.tictactoe.model.Sign;
+import ua.mibal.tictactoe.model.game.Cell;
+import ua.mibal.tictactoe.model.game.GameTable;
+import ua.mibal.tictactoe.model.game.Sign;
 
 /**
  * @author Michael Balakhon

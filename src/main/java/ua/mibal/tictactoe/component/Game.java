@@ -16,8 +16,8 @@
 
 package ua.mibal.tictactoe.component;
 
-import ua.mibal.tictactoe.model.GameTable;
-import ua.mibal.tictactoe.model.Player;
+import ua.mibal.tictactoe.model.game.GameTable;
+import ua.mibal.tictactoe.model.game.Player;
 
 import java.util.Random;
 
@@ -37,26 +37,28 @@ public class Game {
 
     private final CellVerifier drawVerifier;
 
-    private final boolean canSecondPlayerMakeFirstMove;
+    private final GameOverHandler gameOverHandler;
 
+    private final boolean canSecondPlayerMakeFirstMove;
 
     public Game(final DataPrinter dataPrinter,
                 final Player player1,
                 final Player player2,
                 final WinnerVerifier winnerVerifier,
                 final CellVerifier drawVerifier,
-                final boolean canSecondPlayerMakeFirstMove) {
+                final boolean canSecondPlayerMakeFirstMove,
+                final GameOverHandler gameOverHandler) {
         this.dataPrinter = dataPrinter;
         this.player1 = player1;
         this.player2 = player2;
         this.winnerVerifier = winnerVerifier;
         this.drawVerifier = drawVerifier;
+        this.gameOverHandler = gameOverHandler;
         this.canSecondPlayerMakeFirstMove = canSecondPlayerMakeFirstMove;
     }
 
     public void play() {
-        dataPrinter.printInfoMessage("Use the following mapping table to specify a cell using numbers from 1 to 9:");
-        dataPrinter.printMappingTable();
+        dataPrinter.printInstructions();
         final GameTable gameTable = new GameTable();
 
         if (canSecondPlayerMakeFirstMove && new Random().nextBoolean()) {
@@ -71,19 +73,15 @@ public class Game {
                 dataPrinter.printGameTable(gameTable);
                 if (winnerVerifier.isWinner(gameTable, player)) {
                     dataPrinter.printInfoMessage(player + " WIN!");
-                    printGameOver();
+                    gameOverHandler.gameOver();
                     return;
                 }
                 if (drawVerifier.allCellsFilled(gameTable)) {
                     dataPrinter.printInfoMessage("DRAW!");
-                    printGameOver();
+                    gameOverHandler.gameOver();
                     return;
                 }
             }
         }
-    }
-
-    private void printGameOver() {
-        dataPrinter.printInfoMessage("GAME OVER!");
     }
 }

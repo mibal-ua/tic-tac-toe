@@ -17,7 +17,7 @@
 
 package ua.mibal.tictactoe.component;
 
-import ua.mibal.tictactoe.model.GameTable;
+import ua.mibal.tictactoe.model.game.GameTable;
 
 /**
  * @author Michael Balakhon
@@ -25,11 +25,11 @@ import ua.mibal.tictactoe.model.GameTable;
  */
 public interface DataPrinter {
 
+    void printInstructions();
+
     void printInfoMessage(String message);
 
     void printErrorMessage(String message);
-
-    void printMappingTable();
 
     void printGameTable(GameTable gameTable);
 }

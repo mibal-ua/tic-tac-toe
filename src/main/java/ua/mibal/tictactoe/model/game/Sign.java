@@ -15,15 +15,26 @@
  *
  */
 
-package ua.mibal.tictactoe.component;
-
-import ua.mibal.tictactoe.model.game.GameTable;
-import ua.mibal.tictactoe.model.game.Sign;
+package ua.mibal.tictactoe.model.game;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public interface Move {
-    void make(GameTable gameTable, Sign sign);
+public enum Sign {
+
+    X,
+
+    O,
+
+    EMPTY;
+
+    @Override
+    public String toString() {
+        if (this == EMPTY) {
+            return " ";
+        } else {
+            return name();
+        }
+    }
 }

@@ -15,40 +15,17 @@
  *
  */
 
-package ua.mibal.tictactoe.model;
+package ua.mibal.tictactoe.component.console;
 
-import ua.mibal.tictactoe.component.Move;
+import ua.mibal.tictactoe.model.game.Cell;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public class Player {
+public interface CellNumberConverter {
 
-    private final Sign sign;
+    Cell toCell(char num);
 
-    private final Move move;
-
-    public Player(final Sign sign,
-                  final Move move) {
-        this.sign = sign;
-        this.move = move;
-    }
-
-    public Sign getSign() {
-        return sign;
-    }
-
-    public Move getMove() {
-        return move;
-    }
-
-    public void makeMove(final GameTable gameTable){
-        move.make(gameTable, sign);
-    }
-
-    @Override
-    public String toString() {
-        return "'" + sign + "'";
-    }
+    char toNumber(Cell cell);
 }

@@ -15,15 +15,28 @@
  *
  */
 
-package ua.mibal.tictactoe.model;
+package ua.mibal.tictactoe.component.console;
+
+import ua.mibal.tictactoe.component.DataPrinter;
+import ua.mibal.tictactoe.component.GameOverHandler;
+
+import java.util.Scanner;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public enum PlayerType {
+public class ConsoleGameOverHandler implements GameOverHandler {
 
-    USER,
+    private final DataPrinter dataPrinter;
 
-    COMPUTER
+    public ConsoleGameOverHandler(final DataPrinter dataPrinter) {
+        this.dataPrinter = dataPrinter;
+    }
+
+    @Override
+    public void gameOver() {
+        dataPrinter.printInfoMessage("GAME OVER!");
+        new Scanner(System.in).nextLine();
+    }
 }

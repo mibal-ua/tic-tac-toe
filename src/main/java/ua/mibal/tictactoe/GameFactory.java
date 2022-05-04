@@ -15,20 +15,24 @@
  *
  */
 
-package ua.mibal.tictactoe.component;
+package ua.mibal.tictactoe;
 
+import ua.mibal.tictactoe.component.*;
+import ua.mibal.tictactoe.component.config.CommandLineArgumentParser;
+import ua.mibal.tictactoe.component.console.CellNumberConverter;
 import ua.mibal.tictactoe.component.console.ConsoleDataPrinter;
+import ua.mibal.tictactoe.component.console.ConsoleGameOverHandler;
 import ua.mibal.tictactoe.component.console.ConsoleUserInputReader;
-import ua.mibal.tictactoe.component.keypad.DesktopNumericKeypadCellNumberConverter;
+import ua.mibal.tictactoe.component.console.keypad.DesktopNumericKeypadCellNumberConverter;
 import ua.mibal.tictactoe.component.swing.GameWindow;
-import ua.mibal.tictactoe.model.Player;
-import ua.mibal.tictactoe.model.PlayerType;
-import ua.mibal.tictactoe.model.UserInterface;
+import ua.mibal.tictactoe.model.game.Player;
+import ua.mibal.tictactoe.model.config.PlayerType;
+import ua.mibal.tictactoe.model.config.UserInterface;
 
-import static ua.mibal.tictactoe.model.PlayerType.USER;
-import static ua.mibal.tictactoe.model.Sign.O;
-import static ua.mibal.tictactoe.model.Sign.X;
-import static ua.mibal.tictactoe.model.UserInterface.GUI;
+import static ua.mibal.tictactoe.model.config.PlayerType.USER;
+import static ua.mibal.tictactoe.model.game.Sign.O;
+import static ua.mibal.tictactoe.model.game.Sign.X;
+import static ua.mibal.tictactoe.model.config.UserInterface.GUI;
 
 /**
  * @author Michael Balakhon
@@ -54,15 +58,18 @@ public class GameFactory {
     public Game create() {
         final DataPrinter dataPrinter;
         final UserInputReader userInputReader;
+        final GameOverHandler gameOverHandler;
 
         if (userInterface == GUI) {
             final GameWindow gameWindow = new GameWindow();
             dataPrinter = gameWindow;
             userInputReader = gameWindow;
+            gameOverHandler = gameWindow;
         } else {
             final CellNumberConverter cellNumberConverter = new DesktopNumericKeypadCellNumberConverter();
             dataPrinter = new ConsoleDataPrinter(cellNumberConverter);
             userInputReader = new ConsoleUserInputReader(cellNumberConverter, dataPrinter);
+            gameOverHandler = new ConsoleGameOverHandler(dataPrinter);
         }
         final Player player1;
         if (player1Type == USER) {
@@ -83,7 +90,7 @@ public class GameFactory {
                 player2,
                 new WinnerVerifier(),
                 new CellVerifier(),
-                canSecondPlayerMakeFirstMove
-        );
+                canSecondPlayerMakeFirstMove,
+                gameOverHandler);
     }
 }

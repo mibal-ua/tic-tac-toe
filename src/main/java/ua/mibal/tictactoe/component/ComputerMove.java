@@ -16,11 +16,9 @@
 
 package ua.mibal.tictactoe.component;
 
-import ua.mibal.tictactoe.model.Cell;
-import ua.mibal.tictactoe.model.GameTable;
-import ua.mibal.tictactoe.model.Sign;
-
-import static ua.mibal.tictactoe.model.Sign.O;
+import ua.mibal.tictactoe.model.game.Cell;
+import ua.mibal.tictactoe.model.game.GameTable;
+import ua.mibal.tictactoe.model.game.Sign;
 
 import java.util.Random;
 

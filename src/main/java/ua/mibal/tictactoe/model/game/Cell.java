@@ -15,26 +15,36 @@
  *
  */
 
-package ua.mibal.tictactoe.model;
+package ua.mibal.tictactoe.model.game;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public enum Sign {
+public class Cell {
 
-    X,
+    private final int row;
 
-    O,
+    private final int col;
 
-    EMPTY;
+    public Cell(final int row, final int col) {
+        this.row = row;
+        this.col = col;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
+    }
 
     @Override
     public String toString() {
-        if (this == EMPTY) {
-            return " ";
-        } else {
-            return name();
-        }
+        return "Cell{" +
+                "row=" + row +
+                ", col=" + col +
+                '}';
     }
 }

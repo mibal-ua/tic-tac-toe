@@ -15,15 +15,15 @@
  *
  */
 
-package ua.mibal.tictactoe.model;
+package ua.mibal.tictactoe.model.config;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public enum UserInterface {
+public enum PlayerType {
 
-    GUI,
+    USER,
 
-    CONSOLE
+    COMPUTER
 }

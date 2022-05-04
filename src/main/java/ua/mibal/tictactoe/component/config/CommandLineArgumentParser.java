@@ -15,15 +15,15 @@
  *
  */
 
-package ua.mibal.tictactoe.component;
+package ua.mibal.tictactoe.component.config;
 
-import ua.mibal.tictactoe.model.PlayerType;
-import ua.mibal.tictactoe.model.UserInterface;
+import ua.mibal.tictactoe.model.config.PlayerType;
+import ua.mibal.tictactoe.model.config.UserInterface;
 
-import static ua.mibal.tictactoe.model.PlayerType.COMPUTER;
-import static ua.mibal.tictactoe.model.PlayerType.USER;
-import static ua.mibal.tictactoe.model.UserInterface.CONSOLE;
-import static ua.mibal.tictactoe.model.UserInterface.GUI;
+import static ua.mibal.tictactoe.model.config.PlayerType.COMPUTER;
+import static ua.mibal.tictactoe.model.config.PlayerType.USER;
+import static ua.mibal.tictactoe.model.config.UserInterface.CONSOLE;
+import static ua.mibal.tictactoe.model.config.UserInterface.GUI;
 
 /**
  * @author Michael Balakhon

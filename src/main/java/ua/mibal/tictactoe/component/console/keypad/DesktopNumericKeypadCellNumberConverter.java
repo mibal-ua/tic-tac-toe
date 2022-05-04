@@ -14,25 +14,25 @@
  * limitations under the License.
  */
 
-package ua.mibal.tictactoe.component.keypad;
+package ua.mibal.tictactoe.component.console.keypad;
 
-import ua.mibal.tictactoe.component.CellNumberConverter;
-import ua.mibal.tictactoe.model.Cell;
+import ua.mibal.tictactoe.component.console.CellNumberConverter;
+import ua.mibal.tictactoe.model.game.Cell;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public class TerminalNumericKeypadCellNumberConverter implements CellNumberConverter {
+public class DesktopNumericKeypadCellNumberConverter implements CellNumberConverter {
 
     @Override
     public Cell toCell(final char num) {
         final int val = num - '0' - 1;
-        return new Cell(val / 3, val % 3);
+        return new Cell(2 - val / 3, val % 3);
     }
 
     @Override
     public char toNumber(final Cell cell) {
-        return (char) ('0' + (cell.getRow() * 3 + cell.getCol() + 1));
+        return (char) ('0' + ((2 - cell.getRow()) * 3 + cell.getCol() + 1));
     }
 }

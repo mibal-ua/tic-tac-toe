@@ -17,10 +17,9 @@
 
 package ua.mibal.tictactoe.component.console;
 
-import ua.mibal.tictactoe.component.CellNumberConverter;
 import ua.mibal.tictactoe.component.DataPrinter;
-import ua.mibal.tictactoe.model.Cell;
-import ua.mibal.tictactoe.model.GameTable;
+import ua.mibal.tictactoe.model.game.Cell;
+import ua.mibal.tictactoe.model.game.GameTable;
 
 /**
  * @author Michael Balakhon
@@ -28,11 +27,16 @@ import ua.mibal.tictactoe.model.GameTable;
  */
 public class ConsoleDataPrinter implements DataPrinter {
 
-
     private final CellNumberConverter cellNumberConverter;
 
     public ConsoleDataPrinter(final CellNumberConverter cellNumberConverter) {
         this.cellNumberConverter = cellNumberConverter;
+    }
+
+    @Override
+    public void printInstructions() {
+        printInfoMessage("Use the following mapping table to specify a cell using numbers from 1 to 9:");
+        print((i, j) -> String.valueOf(cellNumberConverter.toNumber(new Cell(i, j))));
     }
 
     @Override
@@ -45,10 +49,6 @@ public class ConsoleDataPrinter implements DataPrinter {
         System.err.println(message);
     }
 
-    @Override
-    public void printMappingTable() {
-        print((i, j) -> String.valueOf(cellNumberConverter.toNumber(new Cell(i, j))));
-    }
     @Override
     public void printGameTable(final GameTable gameTable) {
         print((i, j) -> String.valueOf(gameTable.getSign(new Cell(i, j))));
