@@ -20,6 +20,7 @@ package ua.mibal.tictactoe.component;
 import ua.mibal.tictactoe.component.console.ConsoleDataPrinter;
 import ua.mibal.tictactoe.component.console.ConsoleUserInputReader;
 import ua.mibal.tictactoe.component.keypad.DesktopNumericKeypadCellNumberConverter;
+import ua.mibal.tictactoe.component.swing.GameWindow;
 import ua.mibal.tictactoe.model.Player;
 import ua.mibal.tictactoe.model.PlayerType;
 
@@ -45,10 +46,11 @@ public class GameFactory {
     }
 
     public Game create() {
-        final CellNumberConverter cellNumberConverter = new DesktopNumericKeypadCellNumberConverter();
-        final DataPrinter dataPrinter = new ConsoleDataPrinter(cellNumberConverter);
-        final UserInputReader userInputReader = new ConsoleUserInputReader(cellNumberConverter, dataPrinter);
-        final boolean canSecondPlayerMakeFirstMove = player1Type != player2Type;
+        final GameWindow gameWindow = new GameWindow();
+
+        //final CellNumberConverter cellNumberConverter = new DesktopNumericKeypadCellNumberConverter();
+        final DataPrinter dataPrinter = gameWindow; //new ConsoleDataPrinter(cellNumberConverter);
+        final UserInputReader userInputReader = gameWindow; //new ConsoleUserInputReader(cellNumberConverter, dataPrinter);
 
         final Player player1;
         final Player player2;
@@ -62,6 +64,7 @@ public class GameFactory {
         } else {
             player2 = new Player(O, new ComputerMove());
         }
+        final boolean canSecondPlayerMakeFirstMove = player1Type != player2Type;
         return new Game(
                 dataPrinter,
                 player1,
