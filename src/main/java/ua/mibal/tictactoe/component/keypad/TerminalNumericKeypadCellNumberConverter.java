@@ -25,12 +25,6 @@ import ua.mibal.tictactoe.model.Cell;
  */
 public class TerminalNumericKeypadCellNumberConverter implements CellNumberConverter {
 
-    private final char[][] mapping = {
-            {'1', '2', '3'},
-            {'4', '5', '6'},
-            {'7', '8', '9'}
-    };
-
     @Override
     public Cell toCell(final char num) {
         final int val = num - '0' - 1;

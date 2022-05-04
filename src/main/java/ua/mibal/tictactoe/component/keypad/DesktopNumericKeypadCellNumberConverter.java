@@ -25,26 +25,14 @@ import ua.mibal.tictactoe.model.Cell;
  */
 public class DesktopNumericKeypadCellNumberConverter implements CellNumberConverter {
 
-    private final char[][] mapping = {
-            {'7', '8', '9'},
-            {'4', '5', '6'},
-            {'1', '2', '3'}
-    };
-
     @Override
     public Cell toCell(final char num) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (mapping[i][j] == num) {
-                    return new Cell(i, j);
-                }
-            }
-        }
-        return null;
+        final int val = num - '0' - 1;
+        return new Cell(2 - val / 3, val % 3);
     }
 
     @Override
     public char toNumber(final Cell cell) {
-        return mapping[cell.getRow()][cell.getCol()];
+        return (char) ('0' + ((2 - cell.getRow()) * 3 + cell.getCol() + 1));
     }
 }
