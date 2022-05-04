@@ -17,19 +17,13 @@
 
 package ua.mibal.tictactoe.component;
 
-import ua.mibal.tictactoe.model.GameTable;
+import ua.mibal.tictactoe.model.Cell;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public interface DataPrinter {
+public interface UserInputReader {
 
-    void printInfoMessage(String message);
-
-    void printErrorMessage(String message);
-
-    void printMappingTable();
-
-    void printGameTable(GameTable gameTable);
+    Cell getUserInput();
 }

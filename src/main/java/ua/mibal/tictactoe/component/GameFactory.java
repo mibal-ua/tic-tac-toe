@@ -57,7 +57,7 @@ public class GameFactory {
             player2 = new Player(O, new ComputerMove());
         }
         return new Game(
-                new DataPrinter(cellNumberConverter),
+                new DataPrinterImpl(cellNumberConverter),
                 player1,
                 player2,
                 new WinnerVerifier(),
