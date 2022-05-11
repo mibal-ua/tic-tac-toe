@@ -26,6 +26,7 @@ import ua.mibal.tictactoe.component.console.ConsoleUserInputReader;
 import ua.mibal.tictactoe.component.console.keypad.DesktopNumericKeypadCellNumberConverter;
 import ua.mibal.tictactoe.component.strategy.FirstMoveToTheCenterComputerMoveStrategy;
 import ua.mibal.tictactoe.component.strategy.RandomComputerMoveStrategy;
+import ua.mibal.tictactoe.component.strategy.WinNowComputerMoveStrategy;
 import ua.mibal.tictactoe.component.swing.GameWindow;
 import ua.mibal.tictactoe.model.config.PlayerType;
 import ua.mibal.tictactoe.model.config.UserInterface;
@@ -59,6 +60,7 @@ public class GameFactory {
 
     public Game create() {
         final ComputerMoveStrategy[] strategies = {
+                new WinNowComputerMoveStrategy(),
                 new FirstMoveToTheCenterComputerMoveStrategy(),
                 new RandomComputerMoveStrategy()
         };
