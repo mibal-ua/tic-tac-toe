@@ -30,15 +30,21 @@ public class ComputerMove implements Move {
 
     @Override
     public void make(final GameTable gameTable, final Sign sign) {
-        final Random random = new Random();
-        while (true) {
-            final int row = random.nextInt(3);
-            final int col = random.nextInt(3);
-            Cell cell = new Cell(row, col);
-            if (gameTable.isEmpty(cell)) {
-                gameTable.setSign(cell, sign);
-                return;
+        final Cell[] emptyCells = new Cell[9];
+        int count = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                Cell cell = new Cell(i, j);
+                if (gameTable.isEmpty(cell)) {
+                    emptyCells[count++] = cell;
+                }
             }
+        }
+        if (count > 0) {
+            final Cell randomCell = emptyCells[new Random().nextInt(count)];
+            gameTable.setSign(randomCell, sign);
+        } else {
+            throw new IllegalArgumentException("Game table does not contain any empty cell.");
         }
     }
 }

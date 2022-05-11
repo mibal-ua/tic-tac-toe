@@ -29,12 +29,12 @@ public class TerminalNumericKeypadCellNumberConverter implements CellNumberConve
 
     @Override
     public Cell toCell(final char num) {
-        if (1 <= num && num <= 9) {
-            final int val = num - '0' - 1;
-            return new Cell(val / 3, val % 3);
+        if ('1' <= num && num <= '9') {
+        final int val = num - '0' - 1;
+        return new Cell(val / 3, val % 3);
         } else {
             throw new IllegalArgumentException(
-                    format("Number parameter must be between '1' and '9' ! Current value is '%s'", num)
+                    format("Number parameter must be between '1' and '9'. Current value is '%s'", num)
             );
         }
     }
@@ -45,7 +45,7 @@ public class TerminalNumericKeypadCellNumberConverter implements CellNumberConve
             return (char) ('0' + (cell.getRow() * 3 + cell.getCol() + 1));
         } else {
             throw new IllegalArgumentException(
-                    format("Row and col indexes must be between 0 and 2! Current row is '%s', current col is '%s'", cell.getRow(), cell.getCol())
+                    format("Row and col indexes must be between 0 and 2. Current row is '%s', current col is '%s'", cell.getRow(), cell.getCol())
             );
         }
     }

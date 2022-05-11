@@ -44,7 +44,7 @@ public class UserMove implements Move{
                 gameTable.setSign(cell, sign);
                 return;
             } else {
-                dataPrinter.printErrorMessage("Can't make a move, because the cell is not free! Try again");
+                dataPrinter.printErrorMessage("Can't make a move, because the cell is not free. Try again");
             }
         }
     }
