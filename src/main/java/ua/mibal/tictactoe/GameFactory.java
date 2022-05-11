@@ -24,16 +24,17 @@ import ua.mibal.tictactoe.component.console.ConsoleDataPrinter;
 import ua.mibal.tictactoe.component.console.ConsoleGameOverHandler;
 import ua.mibal.tictactoe.component.console.ConsoleUserInputReader;
 import ua.mibal.tictactoe.component.console.keypad.DesktopNumericKeypadCellNumberConverter;
+import ua.mibal.tictactoe.component.strategy.FirstMoveToTheCenterComputerMoveStrategy;
 import ua.mibal.tictactoe.component.strategy.RandomComputerMoveStrategy;
 import ua.mibal.tictactoe.component.swing.GameWindow;
-import ua.mibal.tictactoe.model.game.Player;
 import ua.mibal.tictactoe.model.config.PlayerType;
 import ua.mibal.tictactoe.model.config.UserInterface;
+import ua.mibal.tictactoe.model.game.Player;
 
 import static ua.mibal.tictactoe.model.config.PlayerType.USER;
+import static ua.mibal.tictactoe.model.config.UserInterface.GUI;
 import static ua.mibal.tictactoe.model.game.Sign.O;
 import static ua.mibal.tictactoe.model.game.Sign.X;
-import static ua.mibal.tictactoe.model.config.UserInterface.GUI;
 
 /**
  * @author Michael Balakhon
@@ -58,6 +59,7 @@ public class GameFactory {
 
     public Game create() {
         final ComputerMoveStrategy[] strategies = {
+                new FirstMoveToTheCenterComputerMoveStrategy(),
                 new RandomComputerMoveStrategy()
         };
         final DataPrinter dataPrinter;
