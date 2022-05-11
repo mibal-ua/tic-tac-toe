@@ -34,7 +34,7 @@ public class DesktopNumericKeypadCellNumberConverter implements CellNumberConver
             return new Cell(2 - val / 3, val % 3);
         } else {
             throw new IllegalArgumentException(
-                    format("Number parameter must be between '1' and '9'. Current value is '%s'", num)
+                    format("Number parameter must be between '1' and '9' . Current value is '%s'", num)
             );
         }
     }
