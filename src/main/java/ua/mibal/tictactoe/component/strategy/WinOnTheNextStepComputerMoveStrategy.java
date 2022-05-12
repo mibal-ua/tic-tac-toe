@@ -17,17 +17,17 @@
 
 package ua.mibal.tictactoe.component.strategy;
 
+import ua.mibal.tictactoe.component.ComputerMoveStrategy;
 import ua.mibal.tictactoe.model.game.Sign;
 
 /**
  * @author Michael Balakhon
  * @link http://t.me/mibal_ua
  */
-public class WinNowComputerMoveStrategy extends AbstractComputerMoveStrategy {
+public class WinOnTheNextStepComputerMoveStrategy extends AbstractComputerMoveStrategy implements ComputerMoveStrategy {
 
-
-    public WinNowComputerMoveStrategy() {
-        super(1);
+    public WinOnTheNextStepComputerMoveStrategy() {
+        super(2);
     }
 
     @Override
