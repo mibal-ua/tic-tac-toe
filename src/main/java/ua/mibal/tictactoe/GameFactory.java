@@ -24,8 +24,8 @@ import ua.mibal.tictactoe.component.console.ConsoleDataPrinter;
 import ua.mibal.tictactoe.component.console.ConsoleGameOverHandler;
 import ua.mibal.tictactoe.component.console.ConsoleUserInputReader;
 import ua.mibal.tictactoe.component.console.keypad.DesktopNumericKeypadCellNumberConverter;
-import ua.mibal.tictactoe.component.strategy.*;
 import ua.mibal.tictactoe.component.swing.GameWindow;
+import ua.mibal.tictactoe.model.config.Level;
 import ua.mibal.tictactoe.model.config.PlayerType;
 import ua.mibal.tictactoe.model.config.UserInterface;
 import ua.mibal.tictactoe.model.game.Player;
@@ -47,23 +47,18 @@ public class GameFactory {
 
     private final UserInterface userInterface;
 
-    public GameFactory(final String[] args) {
+    private final Level level;
 
+    public GameFactory(final String[] args) {
         final CommandLineArgumentParser.CommandLineArguments commandLineArguments =
                 new CommandLineArgumentParser(args).parse();
         player1Type = commandLineArguments.getPlayer1Type();
         player2Type = commandLineArguments.getPlayer2Type();
         userInterface = commandLineArguments.getUserInterface();
+        level = commandLineArguments.getLevel();
     }
 
     public Game create() {
-        final ComputerMoveStrategy[] strategies = {
-                new WinNowComputerMoveStrategy(),
-                new PreventUserWinComputerMoveStrategy(),
-                new WinOnTheNextStepComputerMoveStrategy(),
-                new FirstMoveToTheCenterComputerMoveStrategy(),
-                new RandomComputerMoveStrategy()
-        };
         final DataPrinter dataPrinter;
         final UserInputReader userInputReader;
         final GameOverHandler gameOverHandler;
@@ -83,13 +78,13 @@ public class GameFactory {
         if (player1Type == USER) {
             player1 = new Player(X, new UserMove(userInputReader, dataPrinter));
         } else {
-            player1 = new Player(X, new ComputerMove(strategies));
+            player1 = new Player(X, new ComputerMove(level.getStrategies()));
         }
         final Player player2;
         if (player2Type == USER) {
             player2 = new Player(O, new UserMove(userInputReader, dataPrinter));
         } else {
-            player2 = new Player(O, new ComputerMove(strategies));
+            player2 = new Player(O, new ComputerMove(level.getStrategies()));
         }
         final boolean canSecondPlayerMakeFirstMove = player1Type != player2Type;
         return new Game(
@@ -99,6 +94,7 @@ public class GameFactory {
                 new WinnerVerifier(),
                 new CellVerifier(),
                 canSecondPlayerMakeFirstMove,
-                gameOverHandler);
+                gameOverHandler
+        );
     }
 }
