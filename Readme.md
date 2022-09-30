@@ -18,7 +18,7 @@ mvn -P without-jre clean package
 
 ### Run instructions
 
-- Download [OpenJDK 11](https://jdk.java.net/11/);
+- Download [OpenJDK 18](https://jdk.java.net/18/);
 - Unzip the downloaded OpenJDK archive;
 - Configure the `PATH` environment variable:
   - Add `%JDK_HOME%\bin\` directory for Windows;
